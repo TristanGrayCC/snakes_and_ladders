@@ -30,7 +30,6 @@ def turn
     end
   end
   puts "#{@players[0].name} is now on square #{@players[0].square}"
-  @players.rotate!
   input = gets.chomp
   puts input
 end
@@ -38,6 +37,7 @@ end
 def play
   until @players[0].square >= 100
     turn()
+    @players.rotate!
   end
   puts "Congratulations, #{@players[0].name}, you win!"
 end
