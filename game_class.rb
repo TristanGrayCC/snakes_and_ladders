@@ -14,12 +14,16 @@ def start
     player.square = 1
   end
   @players.shuffle!
+  puts "Welcome to Snakes and Ladders!"
+  puts "Let's get started. Press enter to take your turn!"
+  input = gets.chomp
+  puts input
   play()
 end
 
 def turn
   roll = @dice.roll
-  puts "Your turn #{@players[0].name}"
+  puts "#{@players[0].name}'s turn:"
   puts "#{@players[0].name} rolls #{roll}"
   @players[0].square += roll
   for special_square in @special_squares
@@ -40,6 +44,7 @@ def play
     @players.rotate!
   end
   puts "Congratulations, #{@players[0].name}, you win!"
+  puts "Press Enter to exit."
 end
 
 end
