@@ -27,8 +27,13 @@ class TestGame < MiniTest::Test
     @ladder63 = Square.new(63, "Ladder",18)
     @ladder71 = Square.new(71, "Ladder",20)
     @finish_square = Square.new(100,"Finish",0)
-    @player1 = Players.new("Tristan",@turn1,1)
-    @player2 = Players.new("Allegra",@turn2,1)
+    @player1 = Players.new("Tristan",@turn1,nil)
+    @player2 = Players.new("Allegra",@turn2,nil)
+    @players = [@player1, @player2]
+    @game1 = Game.new(1, @players, @dice1)
+
+
+
   end
 
   def test_roll
@@ -37,8 +42,23 @@ class TestGame < MiniTest::Test
     assert_equal(true,included)
   end
 
-  def test_snake
-    assert_equal(@snake17.effect,"something")
+  # def test_snake
+  #   assert_equal(@snake17.effect,"something")
+  # end
+
+  def test_start
+    @game1.start
+    result = @player1.turn_order_number
+    included = (1..6).include?(result)
+    assert_equal(@player1.square, 1)
+    assert_equal(true, included)
   end
+
+  def test_finish
+    @player1.square = 100
+    result = @game1.finish
+    assert_equal(result, "You win!")
+  end
+
 
 end
