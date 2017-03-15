@@ -33,6 +33,9 @@ def turn
       puts "You have been moved #{special_square.move} squares."
     end
   end
+  if @players[0].square > 100
+    @players[0].square = 100
+  end
   puts "#{@players[0].name} is now on square #{@players[0].square}"
   input = gets.chomp
   puts input
