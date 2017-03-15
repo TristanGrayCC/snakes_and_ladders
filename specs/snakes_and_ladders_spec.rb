@@ -46,17 +46,19 @@ class TestGame < MiniTest::Test
     assert_equal(@players[0].name, "Tristan")
   end
 
+  def test_turn
+    @game1.turn
+    result = "True" if @player1.square > 1
+    assert_equal("True", result)
+  end
+
   def test_start
     @game1.start
     result = "True" if @player1.square > 1
     assert_equal("True", result)
   end
 
-  def test_turn
-    @game1.turn
-    result = "True" if @player1.square > 1
-    assert_equal("True", result)
-  end
+
 
 
 
