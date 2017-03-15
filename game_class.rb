@@ -1,5 +1,7 @@
 class Game
 
+attr_accessor :number, :players, :dice, :special_squares
+
 def initialize(number, players, dice, special_squares)
   @number = number
   @players = players
@@ -12,40 +14,31 @@ def start
     player.square = 1
   end
   @players.shuffle!
-  game.play
+  play()
 end
 
 def turn
   roll = @dice.roll
   @players[0].square += roll
   for special_square in @special_squares
-    if special_square.number = player[0].square
-      player[0].square += special_square.move
-      if special_square.move < 0
-        puts "SNAKE!"
-      elsif special_square.move > 0
-        puts "LADDER!"
-      end
+    if special_square.square_number == @players[0].square
+      @players[0].square += special_square.move
+      puts "#{special_square.type}!"
       puts "You have been moved #{special_square.move} squares."
-      puts "#{player[0].square}"
     end
   end
+  puts "#{@players[0].name} is now on square #{@players[0].square}"
   @players.rotate!
+  puts "Your turn #{@players[0].name}"
+  input = gets.chomp
+  puts input
 end
 
 def play
   until @players[0].square >= 100
-    game.turn
+    turn()
   end
   puts "Congratulations, #{@players[0].name}, you win!"
 end
-
-# def finish
-#   for player in @players
-#     if player.square = 100
-#       return "You win!"
-#     end
-#   end
-# end
 
 end

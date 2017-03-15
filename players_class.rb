@@ -1,6 +1,6 @@
 class Players
 
-  attr_accessor :square, :turn_order_number
+  attr_accessor :square, :turn_order_number, :name
 
   def initialize(name, turn_order_number, square)
     @name = name

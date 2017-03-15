@@ -1,5 +1,7 @@
 class Dice
 
+  attr_accessor :sides
+
   def initialize(sides)
     @sides=sides
   end

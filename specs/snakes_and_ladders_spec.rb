@@ -26,10 +26,9 @@ class TestGame < MiniTest::Test
     @ladder51 = Square.new(51, "Ladder",16)
     @ladder63 = Square.new(63, "Ladder",18)
     @ladder71 = Square.new(71, "Ladder",20)
-    @finish_square = Square.new(100,"Finish",0)
-    @special_squares = [@snake17, @snake54, @snake62, @snake64, @snake87, @snake93, @snake95, @snake99, @ladder4, @ladder9, @ladder20, @ladder28, @ladder40, @ladder51, @ladder53, @ladder71, @finish_square]
-    @player1 = Players.new("Tristan",@turn1,nil)
-    @player2 = Players.new("Allegra",@turn2,nil)
+    @special_squares = [@snake17, @snake54, @snake62, @snake64, @snake87, @snake93, @snake95, @snake99, @ladder4, @ladder9, @ladder20, @ladder28, @ladder40, @ladder51, @ladder63, @ladder71]
+    @player1 = Players.new("Tristan",@turn1,0)
+    @player2 = Players.new("Allegra",@turn2,0)
     @players = [@player1, @player2]
     @game1 = Game.new(1, @players, @dice1, @special_squares)
 
@@ -48,11 +47,12 @@ class TestGame < MiniTest::Test
     assert_equal(@player1.square, 1)
   end
 
-  def test_finish
-    @player1.square = 100
-    result = @game1.finish
-    assert_equal(result, "You win!")
+  def test_turn
+    @game1.turn
+    assert_equal(@player1.square, 14)
   end
+
+
 
 
 end
