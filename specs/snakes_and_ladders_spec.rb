@@ -48,10 +48,7 @@ class TestGame < MiniTest::Test
 
   def test_start
     @game1.start
-    result = @player1.turn_order_number
-    included = (1..6).include?(result)
     assert_equal(@player1.square, 1)
-    assert_equal(true, included)
   end
 
   def test_finish
